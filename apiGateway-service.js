@@ -51,30 +51,30 @@ function authRole(role) {
 
 app.use('/viewMenu', authToken, authRole('user'), (req, res) => {
     console.log("INSIDE API GATEWAY ORDER VIEW");
-    proxy.web(req, res, { target: 'http://52.23.164.59:5004' });
+    proxy.web(req, res, { target: 'http://54.196.56.113:5004' });
 });
 
 
 app.use('/placeOrder', authToken, authRole('user'), (req, res) => {
-    proxy.web(req, res, { target: 'http://54.173.199.69:5006' });
+    proxy.web(req, res, { target: 'http://54.196.56.113:5006' });
 })
 
 app.use('/addMenu', authToken, authRole('restaurant'), (req, res) => {
-    proxy.web(req, res, { target: 'http://52.23.164.59:5003' });
+    proxy.web(req, res, { target: 'http://54.196.56.113:5003' });
 })
 
 app.use('/removeMenu', authToken, authRole('restaurant'), (req, res) => {
-    proxy.web(req, res, { target: 'http://52.23.164.59:5005' });
+    proxy.web(req, res, { target: 'http://54.196.56.113:5005' });
 })
 
 app.use('/viewOrder', authToken, authRole('restaurant'), (req, res) => {
     console.log("INSIDE API GATEWAY VIEW ORDER");
-    proxy.web(req, res, { target: 'http://54.173.199.69:5008' });
+    proxy.web(req, res, { target: 'http://54.196.56.113:5008' });
 });
 
 
 app.use('/acceptOrder/:orderId', authToken, authRole('restaurant'), (req, res) => {
-    proxy.web(req, res, { target: 'http://54.173.199.69:5007' });
+    proxy.web(req, res, { target: 'http://54.196.56.113:5007' });
 })
 
 app.listen(port, () => {
